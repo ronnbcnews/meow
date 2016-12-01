@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component
  * Helper class to map masters in properties file into a validated property map
  */
 //@ConditionalOnProperty('github.baseUrl')
-//@Component
+@Component
 //@ConfigurationProperties(prefix = 'github')
 class GitHubProperties {
 

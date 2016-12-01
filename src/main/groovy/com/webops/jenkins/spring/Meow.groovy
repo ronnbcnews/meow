@@ -14,7 +14,7 @@ import org.yaml.snakeyaml.Yaml
 //@EnableAutoConfiguration(exclude = [ WebMvcAutoConfiguration.class, WebClientAutoConfiguration.class,
 //    HttpMessageConvertersAutoConfiguration.class, GroovyTemplateAutoConfiguration.class])
 //@EnableConfigurationProperties(GitHubProperties.class)
-//@ComponentScan(['com.webops.jenkins.spring', 'com.webops.jenkins.spring.config'])
+@ComponentScan(['com.webops.jenkins.spring', 'com.webops.jenkins.spring.config'])
 public class Meow {
   final Map<String, String> DEFAULT_PROPS = [
     'spring.config.location' : 'resources',
