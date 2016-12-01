@@ -23,10 +23,10 @@ public class Meow {
     'spring.config.name'     : 'application,${spring.application.name}'
   ]
 
-  void main(String[] args) {
+  void main() {
      new SpringApplicationBuilder(Meow.class)
         .web(false)
-        .run(args);
+        .run();
     println "started: ${System.getProperty('user.home')} "
   }
 

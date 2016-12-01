@@ -7,9 +7,9 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
 
-@Configuration
-@ConditionalOnProperty('github.enabled')
-@EnableConfigurationProperties(GitHubProperties)
+//@Configuration
+//@ConditionalOnProperty('github.enabled')
+//@EnableConfigurationProperties(GitHubProperties)
 class GitHubConfig {
 
   @Bean
