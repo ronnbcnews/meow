@@ -12,9 +12,29 @@ import org.springframework.beans.factory.annotation.*
 //@EnableConfigurationProperties(GitHubProperties)
 class GitHubConfig {
 
-//  @Bean
-  static main(GitHubProperties gitHubProperties) {
-    println "${gitHubProperties.baseUrl}"
-    println "${gitHubProperties.accessToken}"
+  private String baseUrl;
+  private int accessToken;
+
+  public String getBaseUrl() {
+    return baseUrl;
+  }
+
+  public void setBaseUrl() {
+    this.baseUrl = baseUrl
+  }
+
+  public int getAccessToken() {
+    return accessToken;
+  }
+
+
+  public void setAccessToken() {
+    this.accessToken = accessToken
+  }
+
+  public main() {
+
+    return this.getBaseUrl()
+
   }
 }

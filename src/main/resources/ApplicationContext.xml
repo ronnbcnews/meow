@@ -1,0 +1,11 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="gitHubConfig" class="com.webops.jenkins.spring.config.GitHubConfig">
+        <property name="baseUrl" value="Jon Doe" />
+        <property name="accessToken" value="21" />
+        <property name="commitDisplayLength" value="22" />
+    </bean>
+</beans>

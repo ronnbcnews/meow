@@ -1,5 +1,6 @@
 package com.webops.jenkins.spring
 
+import com.webops.jenkins.spring.config.GitHubConfig
 import com.webops.jenkins.spring.config.GitHubProperties
 //import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 //import org.springframework.boot.autoconfigure.groovy.template.GroovyTemplateAutoConfiguration
@@ -7,7 +8,9 @@ import com.webops.jenkins.spring.config.GitHubProperties
 import org.springframework.context.annotation.*
 import org.springframework.beans.factory.annotation.*
 import org.springframework.context.ApplicationContext
+import org.springframework.context.annotation.*
 import org.springframework.stereotype.Component
+import org.springframework.context.support.ClassPathXmlApplicationContext
 
 //import org.springframework.boot.builder.SpringApplicationBuilder;
 //import org.springframework.boot.autoconfigure.web.*
@@ -27,11 +30,10 @@ public class Meow {
     'spring.config.name'     : 'application,${spring.application.name}'
   ]
 
-  @Autowired
-  private ApplicationContext applicationContext;
-
+  ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml");
   void main() {
-    println "started: ${System.getProperty('user.home')} "
+    GitHubConfig p1 = (GitHubConfig) context.getBean("gitHubConfig");
+    System.out.println(p1.main());
   }
 
 }
