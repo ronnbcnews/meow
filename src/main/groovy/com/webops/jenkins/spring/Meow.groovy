@@ -26,7 +26,6 @@ public class Meow {
   void main(String[] args) {
      new SpringApplicationBuilder(Meow.class)
         .web(false)
-        .properties(DEFAULT_PROPS)
         .run(args);
     println "started: ${System.getProperty('user.home')} "
   }
