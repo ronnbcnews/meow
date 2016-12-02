@@ -21,6 +21,17 @@ def printClassPath(classLoader) {
   }
 }
 //printClassPath this.class.classLoader
+/*
+GroovyClassLoader loader = new GroovyClassLoader(getClass().getClassLoader());
+try {
+  StringBuffer classText=new StringBuffer();
+  Class groovyClass = loader.parseClass(classText.toString());
+  ActionList actionList= (ActionList)groovyClass.newInstance();
+  return actionList;
+} catch (Exception e) {
+  println e
+}
+*/
 app = new Meow()
 app.main()
 
