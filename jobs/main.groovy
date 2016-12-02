@@ -11,6 +11,16 @@ INFO: job-spring #39 main build action completed: SUCCESS
 
  */
 System.out.println(System.getenv("CLASSPATH")+"\n");
+def printClassPath(classLoader) {
+  println "$classLoader"
+  classLoader.getURLs().each {url->
+    println "- ${url.toString()}"
+  }
+  if (classLoader.parent) {
+    printClassPath(classLoader.parent)
+  }
+}
+printClassPath this.class.classLoader
 app = new Meow()
 app.main()
 
