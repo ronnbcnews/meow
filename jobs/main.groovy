@@ -20,7 +20,8 @@ def printClassPath(classLoader) {
     printClassPath(classLoader.parent)
   }
 }
-//printClassPath this.class.classLoader
+println "---"
+printClassPath this.class.classLoader
 /*
 GroovyClassLoader loader = new GroovyClassLoader(getClass().getClassLoader());
 try {
