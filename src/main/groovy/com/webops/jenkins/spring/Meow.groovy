@@ -12,6 +12,7 @@ import org.springframework.context.ApplicationContext
 import org.springframework.context.*
 import org.springframework.context.support.*
 import org.yaml.snakeyaml.Yaml
+import groovy.lang.GroovyClassLoader
 
 //@Configurable
 @Component('com.webops.jenkins.spring.config')
@@ -26,19 +27,16 @@ public class Meow {
       'spring.config.name'     : 'application,${spring.application.name}'
   ]
 
-  def printClassPath(classLoader) {
-    println "$classLoader"
+
+  ApplicationContext context = new ClassPathXmlApplicationContext("file:///C:/Program%20Files%20(x86)/Jenkins/workspace/NBC%20DSL%20APPROACH/src/main/resources/ApplicationContext.xml");
+  void main() {
+    def classLoader = new GroovyClassLoader()
     classLoader.getURLs().each {url->
       println "- ${url.toString()}"
     }
     if (classLoader.parent) {
       printClassPath(classLoader.parent)
     }
-  }
-
-  ApplicationContext context = new ClassPathXmlApplicationContext("file:///C:/Program%20Files%20(x86)/Jenkins/workspace/NBC%20DSL%20APPROACH/src/main/resources/ApplicationContext.xml");
-  void main() {
-    printClassPath this.class.classLoader
     GitHubConfig p1 = (GitHubConfig) context.getBean("gitHubConfig");
     System.out.println(p1.main());
   }}
