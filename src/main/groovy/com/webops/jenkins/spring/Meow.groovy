@@ -37,7 +37,7 @@ public class Meow {
     String resourceDir = "/src/main/resources/"
     if(Jenkins.getInstance()) {
       def build = Thread.currentThread().executable
-      xmlConfig = build.workspace.toString() + resourceDir + xmlFile
+      xmlConfig = "/" + build.workspace.toString() + resourceDir + xmlFile
     } else {
       xmlConfig = xmlFile
     }
