@@ -13,6 +13,10 @@ import org.springframework.context.*
 import org.springframework.context.support.*
 import org.yaml.snakeyaml.Yaml
 import groovy.lang.GroovyClassLoader
+import jenkins.*
+import jenkins.model.*
+import hudson.*
+import hudson.model.*
 
 //@Configurable
 @Component('com.webops.jenkins.spring.config')
@@ -30,8 +34,9 @@ public class Meow {
   public static void main() {
     String xmlFile = "ApplicationContext.xml"
     String resourceDir = "/src/main/resources/"
-    if(System.getenv('WORKSPACE')) {
-      String xmlConfig = System.getenv('WORKSPACE').toString() + resourceDir + xmlFile
+    if(Jenkins.getInstance()) {
+      def build = Thread.currentThread().executable
+      def yamlFilesPath = build.workspace.toString() + resourceDir + xmlFile
     } else {
       String xmlConfig = xmlFile
     }
