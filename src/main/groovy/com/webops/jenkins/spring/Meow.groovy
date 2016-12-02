@@ -26,17 +26,18 @@ public class Meow {
       'spring.config.name'     : 'application,${spring.application.name}'
   ]
 
+  def printClassPath(classLoader) {
+    println "$classLoader"
+    classLoader.getURLs().each {url->
+      println "- ${url.toString()}"
+    }
+    if (classLoader.parent) {
+      printClassPath(classLoader.parent)
+    }
+  }
+
   ApplicationContext context = new ClassPathXmlApplicationContext("file:///C:/Program%20Files%20(x86)/Jenkins/workspace/NBC%20DSL%20APPROACH/src/main/resources/ApplicationContext.xml");
   void main() {
-    def printClassPath(classLoader) {
-      println "$classLoader"
-      classLoader.getURLs().each {url->
-        println "- ${url.toString()}"
-      }
-      if (classLoader.parent) {
-        printClassPath(classLoader.parent)
-      }
-    }
     printClassPath this.class.classLoader
     GitHubConfig p1 = (GitHubConfig) context.getBean("gitHubConfig");
     System.out.println(p1.main());
