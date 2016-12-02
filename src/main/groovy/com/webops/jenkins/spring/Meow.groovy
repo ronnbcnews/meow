@@ -27,9 +27,16 @@ public class Meow {
       'spring.config.name'     : 'application,${spring.application.name}'
   ]
 
+  def XmlConfigs = [
+      "classpath*:src/main/resources/ApplicationContext.xml"
+  ]
 
   public static void main() {
-    ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:src/main/resources/ApplicationContext.xml");
+    def XmlConfigs = [
+        "classpath*:src/main/resources/ApplicationContext.xml"
+    ]
+
+    ApplicationContext context = new ClassPathXmlApplicationContext(XmlConfigs);
     GitHubConfig p1 = (GitHubConfig) context.getBean('gitHubConfig');
     System.out.println(p1.main());
   }
