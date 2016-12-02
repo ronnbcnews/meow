@@ -33,7 +33,7 @@ public class Meow {
 
   public static void main() {
     String[] XmlConfigs = [
-        "classpath*:src/main/resources/ApplicationContext.xml"
+        "classpath:src/main/resources/ApplicationContext.xml"
     ]
 
     ApplicationContext context = new ClassPathXmlApplicationContext(XmlConfigs);
