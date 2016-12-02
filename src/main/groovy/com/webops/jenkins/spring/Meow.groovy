@@ -32,16 +32,17 @@ public class Meow {
   ]
 
   public static void main() {
+    String xmlConfig
     String xmlFile = "ApplicationContext.xml"
     String resourceDir = "/src/main/resources/"
     if(Jenkins.getInstance()) {
       def build = Thread.currentThread().executable
-      def yamlFilesPath = build.workspace.toString() + resourceDir + xmlFile
+      xmlConfig = build.workspace.toString() + resourceDir + xmlFile
     } else {
-      String xmlConfig = xmlFile
+      xmlConfig = xmlFile
     }
 
-    ApplicationContext context = new ClassPathXmlApplicationContext(xmlFile);
+    ApplicationContext context = new ClassPathXmlApplicationContext(xmlConfig);
     GitHubConfig p1 = (GitHubConfig) context.getBean('gitHubConfig');
     System.out.println(p1.main());
   }
