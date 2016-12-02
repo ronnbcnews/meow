@@ -37,6 +37,6 @@ public class Meow {
     if (classLoader.parent) {
       printClassPath(classLoader.parent)
     }
-    GitHubConfig p1 = (GitHubConfig) context.getBean("gitHubConfig");
-    System.out.println(p1.main());
+    //GitHubConfig p1 = (GitHubConfig) context.getBean("gitHubConfig");
+    //System.out.println(p1.main());
   }}
