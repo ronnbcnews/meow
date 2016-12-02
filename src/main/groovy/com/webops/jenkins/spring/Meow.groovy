@@ -41,7 +41,7 @@ public class Meow {
       xmlConfig = "/"
 
     InputStreamResource resource = new ClassPathResource(xmlFile)
-    println (resource.getInputStream().toString())
+    println (resource.getInputStream())
 
     ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml").getResourceByPath(xmlConfig)
 
