@@ -32,7 +32,7 @@ public class Meow {
   void main() {
     def classLoader = new GroovyClassLoader()
     classLoader.getURLs().each { url->
-      println "- ${url.toString()}"
+      System.out.print("- ${url.toString()}")
     }
     //GitHubConfig p1 = (GitHubConfig) context.getBean("gitHubConfig");
     //System.out.println(p1.main());
