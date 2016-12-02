@@ -1,6 +1,7 @@
 import com.webops.jenkins.spring.Meow
+import java.lang.ClassLoader
 
-this.class.classLoader.rootLoader.addURL( new URL("file:src/main/groovy") )
+
 app = new Meow()
 app.main()
 
