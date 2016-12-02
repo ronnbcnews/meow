@@ -27,7 +27,7 @@ public class Meow {
   ]
 
   public static void main() {
-    String xmlConfig = "ApplicationContext.xml"
+    String xmlConfig = "**/ApplicationContext.xml"
 
     ApplicationContext context = new ClassPathXmlApplicationContext(xmlConfig);
     GitHubConfig p1 = (GitHubConfig) context.getBean('gitHubConfig');
