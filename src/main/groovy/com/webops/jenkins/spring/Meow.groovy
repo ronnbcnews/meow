@@ -28,7 +28,7 @@ public class Meow {
   ]
 
 
-  void main() {
+  public static void main() {
     ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:src/main/resources/ApplicationContext.xml");
     GitHubConfig p1 = (GitHubConfig) context.getBean('gitHubConfig');
     System.out.println(p1.main());
