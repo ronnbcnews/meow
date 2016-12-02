@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.*
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.ConfigurableApplicationContext
 import org.springframework.context.annotation.*
+import org.springframework.core.io.ClassPathResource
+import org.springframework.core.io.InputStreamResource
 import org.springframework.stereotype.Component
 import org.springframework.beans.factory.annotation.*
 import org.springframework.context.ApplicationContext
@@ -37,6 +39,9 @@ public class Meow {
 
       def build = Thread.currentThread().executable
       xmlConfig = "/"
+
+    InputStreamResource resource = new ClassPathResource(xmlFile)
+    println (resource.getInputStream().toString())
 
     ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml").getResourceByPath(xmlConfig)
 
