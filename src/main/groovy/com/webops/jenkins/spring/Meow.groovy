@@ -18,7 +18,6 @@ import groovy.lang.GroovyClassLoader
 @Component('com.webops.jenkins.spring.config')
 //@EnableAutoConfiguration
 @EnableConfigurationProperties(GitHubProperties.class)
-@Contex
 //@ComponentScan(['com.webops.jenkins.spring', 'com.webops.jenkins.spring.config'])
 public class Meow {
   final Map<String, String> DEFAULT_PROPS = [
