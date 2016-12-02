@@ -2,38 +2,32 @@ package com.webops.jenkins.spring
 
 import com.webops.jenkins.spring.config.GitHubConfig
 import com.webops.jenkins.spring.config.GitHubProperties
-//import org.springframework.boot.autoconfigure.EnableAutoConfiguration
-//import org.springframework.boot.autoconfigure.groovy.template.GroovyTemplateAutoConfiguration
-//import org.springframework.boot.context.properties.EnableConfigurationProperties
-import org.springframework.context.annotation.*
-import org.springframework.beans.factory.annotation.*
-import org.springframework.context.ApplicationContext
+import org.springframework.boot.autoconfigure.*
+import org.springframework.boot.context.properties.EnableConfigurationProperties
+import org.springframework.context.ConfigurableApplicationContext
 import org.springframework.context.annotation.*
 import org.springframework.stereotype.Component
-import org.springframework.context.support.ClassPathXmlApplicationContext
-
-//import org.springframework.boot.builder.SpringApplicationBuilder;
-//import org.springframework.boot.autoconfigure.web.*
+import org.springframework.beans.factory.annotation.*
+import org.springframework.context.ApplicationContext
+import org.springframework.context.*
+import org.springframework.context.support.*
 import org.yaml.snakeyaml.Yaml
 
-@Configurable
+//@Configurable
 @Component('com.webops.jenkins.spring.config')
-//@EnableAutoConfiguration(exclude = [ WebMvcAutoConfiguration.class, WebClientAutoConfiguration.class,
-//    HttpMessageConvertersAutoConfiguration.class, GroovyTemplateAutoConfiguration.class])
-//@EnableConfigurationProperties(GitHubProperties.class)
+//@EnableAutoConfiguration
+@EnableConfigurationProperties(GitHubProperties.class)
 //@ComponentScan(['com.webops.jenkins.spring', 'com.webops.jenkins.spring.config'])
 public class Meow {
   final Map<String, String> DEFAULT_PROPS = [
-    'spring.config.location' : 'resources',
-    'spring.application.name': 'meow',
-    'spring.main.banner-mode' : 'off',
-    'spring.config.name'     : 'application,${spring.application.name}'
+      'spring.config.location' : 'resources',
+      'spring.application.name': 'meow',
+      'spring.main.banner-mode' : 'off',
+      'spring.config.name'     : 'application,${spring.application.name}'
   ]
 
   ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml");
   void main() {
     GitHubConfig p1 = (GitHubConfig) context.getBean("gitHubConfig");
     System.out.println(p1.main());
-  }
-
-}
+  }}
