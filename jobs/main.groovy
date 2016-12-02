@@ -20,7 +20,7 @@ def printClassPath(classLoader) {
     printClassPath(classLoader.parent)
   }
 }
-printClassPath this.class.classLoader
+//printClassPath this.class.classLoader
 app = new Meow()
 app.main()
 
