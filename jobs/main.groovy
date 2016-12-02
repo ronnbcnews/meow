@@ -21,7 +21,7 @@ def printClassPath(classLoader) {
   }
 }
 println "---"
-//printClassPath this.class.classLoader
+printClassPath this.class.classLoader
 /*
 GroovyClassLoader loader = new GroovyClassLoader(getClass().getClassLoader());
 try {

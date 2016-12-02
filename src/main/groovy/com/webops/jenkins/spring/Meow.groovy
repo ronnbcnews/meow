@@ -18,6 +18,7 @@ import groovy.lang.GroovyClassLoader
 @Component('com.webops.jenkins.spring.config')
 //@EnableAutoConfiguration
 @EnableConfigurationProperties(GitHubProperties.class)
+@Contex
 //@ComponentScan(['com.webops.jenkins.spring', 'com.webops.jenkins.spring.config'])
 public class Meow {
   final Map<String, String> DEFAULT_PROPS = [
@@ -28,7 +29,7 @@ public class Meow {
   ]
 
 
-  ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml");
+  ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:ApplicationContext.xml");
   void main() {
     def classLoader = new GroovyClassLoader()
     classLoader.getURLs().each { url->
