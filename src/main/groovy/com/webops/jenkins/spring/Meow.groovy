@@ -12,6 +12,10 @@ import org.springframework.context.ApplicationContext
 import org.springframework.context.*
 import org.springframework.context.support.*
 import org.yaml.snakeyaml.Yaml
+import jenkins.*
+import jenkins.model.*
+import hudson.*
+import hudson.model.*
 
 //@Configurable
 @Component('com.webops.jenkins.spring.config')
