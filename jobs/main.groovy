@@ -11,28 +11,6 @@ INFO: job-spring #39 main build action completed: SUCCESS
 
  */
 System.out.println(System.getenv("CLASSPATH")+"\n");
-def printClassPath(classLoader) {
-  println "$classLoader"
-  classLoader.getURLs().each {url->
-    println "- ${url.toString()}"
-  }
-  if (classLoader.parent) {
-    printClassPath(classLoader.parent)
-  }
-}
-println "---"
-//printClassPath this.class.classLoader
-/*
-GroovyClassLoader loader = new GroovyClassLoader(getClass().getClassLoader());
-try {
-  StringBuffer classText=new StringBuffer();
-  Class groovyClass = loader.parseClass(classText.toString());
-  ActionList actionList= (ActionList)groovyClass.newInstance();
-  return actionList;
-} catch (Exception e) {
-  println e
-}
-*/
 app = new Meow()
 app.main()
 
