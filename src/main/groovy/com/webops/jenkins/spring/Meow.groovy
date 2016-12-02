@@ -27,7 +27,7 @@ public class Meow {
   ]
 
   public static void main() {
-    String xmlConfig = "ApplicationContext.xml"
+    String xmlConfig = "file:ApplicationContext.xml"
 
     ApplicationContext context = new FileSystemXmlApplicationContext(xmlConfig)
 
