@@ -30,7 +30,7 @@ public class Meow {
 
   ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:src/main/resources/ApplicationContext.xml");
   void main() {
-    println "meow"
-    //GitHubConfig p1 = (GitHubConfig) context.getBean("gitHubConfig");
-    //System.out.println(p1.main());
-  }}
+    GitHubConfig p1 = (GitHubConfig) context.getBean("gitHubConfig");
+    System.out.println(p1.main());
+  }
+}
