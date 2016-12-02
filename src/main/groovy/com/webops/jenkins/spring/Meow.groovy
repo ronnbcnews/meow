@@ -30,10 +30,7 @@ public class Meow {
 
   ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:ApplicationContext.xml");
   void main() {
-    def classLoader = new GroovyClassLoader()
-    classLoader.getURLs().each { url->
-      println("inside: - ${url.toString()}")
-    }
+    println "meow"
     //GitHubConfig p1 = (GitHubConfig) context.getBean("gitHubConfig");
     //System.out.println(p1.main());
   }}
