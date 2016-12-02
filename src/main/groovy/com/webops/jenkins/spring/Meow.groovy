@@ -37,8 +37,7 @@ public class Meow {
 
     if(Jenkins.getInstance()) {
       def build = Thread.currentThread().executable
-    //  xmlConfig = "/" + build.workspace.toString() + "/src/main/groovy/"
-       xmlConfig =  "/src/main/groovy/"
+      xmlConfig = "/" + build.workspace.toString()
 
     } else {
       xmlConfig = xmlFile
