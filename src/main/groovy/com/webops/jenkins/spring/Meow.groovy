@@ -28,11 +28,11 @@ public class Meow {
   ]
 
 
-  //ApplicationContext context = new ClassPathXmlApplicationContext("file:///C:/Program%20Files%20(x86)/Jenkins/workspace/NBC%20DSL%20APPROACH/src/main/resources/ApplicationContext.xml");
+  ApplicationContext context = new ClassPathXmlApplicationContext("file:///C:/Program%20Files%20(x86)/Jenkins/workspace/NBC%20DSL%20APPROACH/src/main/resources/ApplicationContext.xml");
   void main() {
     def classLoader = new GroovyClassLoader()
     classLoader.getURLs().each { url->
-      System.out.print("- ${url.toString()}")
+      println("inside: - ${url.toString()}")
     }
     //GitHubConfig p1 = (GitHubConfig) context.getBean("gitHubConfig");
     //System.out.println(p1.main());
