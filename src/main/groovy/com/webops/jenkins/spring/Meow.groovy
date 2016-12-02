@@ -35,13 +35,8 @@ public class Meow {
     String xmlFile = "ApplicationContext.xml"
     String resourceDir = "/src/main/resources/"
 
-    if(Jenkins.getInstance()) {
       def build = Thread.currentThread().executable
-      xmlConfig = "/" + build.workspace.toString()
-
-    } else {
-      xmlConfig = xmlFile
-    }
+      xmlConfig = "/"
 
     ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml").getResourceByPath(xmlConfig)
 
