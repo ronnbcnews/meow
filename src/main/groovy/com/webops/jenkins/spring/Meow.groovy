@@ -28,7 +28,7 @@ public class Meow {
   ]
 
 
-  ApplicationContext context = new ClassPathXmlApplicationContext("file:///C:/Program%20Files%20(x86)/Jenkins/workspace/NBC%20DSL%20APPROACH/src/main/resources/ApplicationContext.xml");
+  ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml");
   void main() {
     def classLoader = new GroovyClassLoader()
     classLoader.getURLs().each { url->
