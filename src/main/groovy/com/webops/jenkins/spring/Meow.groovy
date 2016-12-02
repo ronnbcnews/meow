@@ -37,12 +37,12 @@ public class Meow {
 
     if(Jenkins.getInstance()) {
       def build = Thread.currentThread().executable
-      xmlConfig = "/" + build.workspace.toString() + "/" + xmlFile
+      xmlConfig = "/" + build.workspace.toString() + "/src/main/groovy/"
     } else {
       xmlConfig = xmlFile
     }
 
-    ApplicationContext context = new FileSystemXmlApplicationContext(xmlConfig)
+    ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml").getResourceByPath(xmlConfig)
 
     GitHubConfig p1 = (GitHubConfig) context.getBean('gitHubConfig');
     System.out.println(p1.main());
