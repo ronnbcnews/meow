@@ -13,13 +13,11 @@ import org.springframework.beans.factory.annotation.*
 import org.springframework.context.ApplicationContext
 import org.springframework.context.*
 import org.springframework.context.support.*
-import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.yaml.snakeyaml.Yaml
 import jenkins.*
 import jenkins.model.*
 import hudson.*
 import hudson.model.*
-import groovy.lang.GroovyClassLoader
 
 //@Configurable
 @Component('com.webops.jenkins.spring.config')
@@ -27,13 +25,26 @@ import groovy.lang.GroovyClassLoader
 @EnableConfigurationProperties(GitHubProperties.class)
 //@ComponentScan(['com.webops.jenkins.spring', 'com.webops.jenkins.spring.config'])
 public class Meow {
+  final Map<String, String> DEFAULT_PROPS = [
+      'spring.config.location' : 'resources',
+      'spring.application.name': 'meow',
+      'spring.main.banner-mode' : 'off',
+      'spring.config.name'     : 'application,${spring.application.name}'
+  ]
 
-  ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:ApplicationContext.xml");
-  void main() {
-    def classLoader = new GroovyClassLoader()
-    classLoader.getURLs().each { url->
-      println("inside: - ${url.toString()}")
-    }
-    //GitHubConfig p1 = (GitHubConfig) context.getBean("gitHubConfig");
-    //System.out.println(p1.main());
-  }}
+  public static void main() {
+    String xmlConfig
+    String xmlFile = "ApplicationContext.xml"
+    String resourceDir = "/src/main/resources/"
+
+    //  def build = Thread.currentThread().executable
+    xmlConfig = "/"
+  }
+/**
+    ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml").getResourceByPath(xmlConfig)
+
+    GitHubConfig p1 = (GitHubConfig) context.getBean('gitHubConfig');
+    System.out.println(p1.main());
+  }
+ */
+}
