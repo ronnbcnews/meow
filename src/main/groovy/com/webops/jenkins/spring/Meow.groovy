@@ -43,6 +43,7 @@ public class Meow {
     } else {
       xmlConfig = xmlFile
     }
+    System.out.println("----");
     System.out.println(System.getProperty("java.class.path"));
   }
 /**
