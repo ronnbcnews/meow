@@ -43,7 +43,7 @@ public class Meow {
     classLoader.getURLs().each { url->
       println("inside: - ${url.toString()}")
     }
- ApplicationContext ctxParent = new
+
  ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml").getResourceByPath(xmlConfig)
  GitHubConfig p1 = (GitHubConfig) context.getBean('gitHubConfig');
  System.out.println(p1.main());
