@@ -28,20 +28,12 @@ import groovy.lang.GroovyClassLoader
 //@ComponentScan(['com.webops.jenkins.spring', 'com.webops.jenkins.spring.config'])
 public class Meow {
 
-  public static void main() {
-    final Map<String, String> DEFAULT_PROPS = [
-        'spring.config.location' : 'resources',
-        'spring.application.name': 'meow',
-        'spring.main.banner-mode': 'off',
-        'spring.config.name'     : 'application,${spring.application.name}'
-    ]
-
+  ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:ApplicationContext.xml");
+  void main() {
     def classLoader = new GroovyClassLoader()
-    classLoader.getURLs().each { url ->
+    classLoader.getURLs().each { url->
       println("inside: - ${url.toString()}")
     }
-    // ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml").getResourceByPath(xmlConfig)
-// GitHubConfig p1 = (GitHubConfig) context.getBean('gitHubConfig');
-// System.out.println(p1.main());
-  }
-}
+    //GitHubConfig p1 = (GitHubConfig) context.getBean("gitHubConfig");
+    //System.out.println(p1.main());
+  }}
