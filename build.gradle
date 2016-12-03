@@ -50,9 +50,9 @@ dependencies {
 //  compile 'org.springframework:spring-expression:2.5.6'
 
   compile(
-      [group: 'org.springframework', name: 'spring-core', version: '2.5.6'],
-      [group: 'org.springframework', name: 'spring-context', version: '2.5.6'],
-      [group: 'org.springframework', name: 'spring-webmvc', version: '2.5.6'],
+      [group: 'org.springframework', name: 'spring-core', version: '2.5.6.SEC03'],
+      [group: 'org.springframework', name: 'spring-context', version: '2.5.6.SEC03'],
+      [group: 'org.springframework', name: 'spring-webmvc', version: '2.5.6.SEC03'],
       [group: 'org.springframework', name: 'spring-boot-starter', version: '1.0.0.RELEASE'],
      // [group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.0.0.RELEASE' ]
   )
