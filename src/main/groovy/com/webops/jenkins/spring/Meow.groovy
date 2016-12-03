@@ -19,6 +19,7 @@ import jenkins.*
 import jenkins.model.*
 import hudson.*
 import hudson.model.*
+import groovy.lang.GroovyClassLoader
 
 //@Configurable
 @Component('com.webops.jenkins.spring.config')
