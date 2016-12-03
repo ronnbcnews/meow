@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.*
 import org.springframework.context.ApplicationContext
 import org.springframework.context.*
 import org.springframework.context.support.*
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.yaml.snakeyaml.Yaml
 import jenkins.*
 import jenkins.model.*
@@ -25,27 +26,26 @@ import hudson.model.*
 @EnableConfigurationProperties(GitHubProperties.class)
 //@ComponentScan(['com.webops.jenkins.spring', 'com.webops.jenkins.spring.config'])
 public class Meow {
-  final Map<String, String> DEFAULT_PROPS = [
-      'spring.config.location' : 'resources',
-      'spring.application.name': 'meow',
-      'spring.main.banner-mode' : 'off',
-      'spring.config.name'     : 'application,${spring.application.name}'
-  ]
+
 
   public static void main() {
+    final Map<String, String> DEFAULT_PROPS = [
+        'spring.config.location' : 'resources',
+        'spring.application.name': 'meow',
+        'spring.main.banner-mode': 'off',
+        'spring.config.name'     : 'application,${spring.application.name}'
+    ]
+
     String xmlConfig
     String xmlFile = "ApplicationContext.xml"
     String resourceDir = "/src/main/resources/"
-
-      def build = Thread.currentThread().executable
-      xmlConfig = "/"
-
-    InputStreamResource resource = new ClassPathResource(xmlFile)
-    println (resource.getInputStream())
-
-    ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml").getResourceByPath(xmlConfig)
-
-    GitHubConfig p1 = (GitHubConfig) context.getBean('gitHubConfig');
-    System.out.println(p1.main());
-  }
+    def classLoader = new GroovyClassLoader()
+    classLoader.getURLs().each { url->
+      println("inside: - ${url.toString()}")
+    }
+ ApplicationContext ctxParent = new
+ ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml").getResourceByPath(xmlConfig)
+ GitHubConfig p1 = (GitHubConfig) context.getBean('gitHubConfig');
+ System.out.println(p1.main());
+ }
 }
