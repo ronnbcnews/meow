@@ -6,13 +6,18 @@ import org.springframework.boot.autoconfigure.*
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.ConfigurableApplicationContext
 import org.springframework.context.annotation.*
+import org.springframework.core.io.ClassPathResource
+import org.springframework.core.io.InputStreamResource
 import org.springframework.stereotype.Component
 import org.springframework.beans.factory.annotation.*
 import org.springframework.context.ApplicationContext
 import org.springframework.context.*
 import org.springframework.context.support.*
 import org.yaml.snakeyaml.Yaml
-import groovy.lang.GroovyClassLoader
+import jenkins.*
+import jenkins.model.*
+import hudson.*
+import hudson.model.*
 
 //@Configurable
 @Component('com.webops.jenkins.spring.config')
@@ -23,21 +28,36 @@ public class Meow {
   final Map<String, String> DEFAULT_PROPS = [
       'spring.config.location' : 'resources',
       'spring.application.name': 'meow',
-      'spring.main.banner-mode' : 'off',
+      'spring.main.banner-mode': 'off',
       'spring.config.name'     : 'application,${spring.application.name}'
   ]
 
-  def XmlConfigs = [
-      "classpath*:src/main/resources/ApplicationContext.xml"
-  ]
-
   public static void main() {
-    String[] XmlConfigs = [
-        "classpath*:src/main/resources/ApplicationContext.xml"
-    ]
-
-    ApplicationContext context = new ClassPathXmlApplicationContext(XmlConfigs);
-    GitHubConfig p1 = (GitHubConfig) context.getBean('gitHubConfig');
-    System.out.println(p1.main());
+    String xmlConfig
+    String xmlFile = "ApplicationContext.xml"
+    String resourceDir = "/src/main/resources/"
+//this part only works in jenkins, unless you have the jars loaded
+    if(Jenkins.getInstance()) {
+      def build = Thread.currentThread().executable
+      xmlConfig = "/" + build.workspace.toString()
+    } else {
+      xmlConfig = xmlFile
+    }
+    System.out.println("----");
+    System.out.println(System.getProperty("java.class.path"));
   }
+/**
+ ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml").getResourceByPath(xmlConfig)
+
+ GitHubConfig p1 = (GitHubConfig) context.getBean('gitHubConfig');
+ System.out.println(p1.main());
+ }
+ */
+/**
+ String xmlConfig
+ String xmlFile = "ApplicationContext.xml"
+ String resourceDir = "/src/main/resources/"
+ if(Jenkins.getInstance()) {def build = Thread.currentThread().executable
+ xmlConfig = "/" + build.workspace.toString() + resourceDir + xmlFile} else {xmlConfig = xmlFile}ApplicationContext context = new FileSystemXmlApplicationContext(xmlConfig)
+ **/
 }
