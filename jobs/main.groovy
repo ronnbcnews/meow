@@ -11,9 +11,12 @@ def printClassPath(classLoader) {
     printClassPath(classLoader.parent)
   }
 }
+String xmlConfig
+String xmlFile = "ApplicationContext.xml"
+String resourceDir = "/src/main/resources/"
+
 printClassPath this.class.classLoader
 println "---"
-
 app = new Meow()
 app.main()
 

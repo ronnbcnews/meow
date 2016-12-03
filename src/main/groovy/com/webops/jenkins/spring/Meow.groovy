@@ -28,7 +28,7 @@ public class Meow {
   final Map<String, String> DEFAULT_PROPS = [
       'spring.config.location' : 'resources',
       'spring.application.name': 'meow',
-      'spring.main.banner-mode' : 'off',
+      'spring.main.banner-mode': 'off',
       'spring.config.name'     : 'application,${spring.application.name}'
   ]
 
@@ -37,14 +37,27 @@ public class Meow {
     String xmlFile = "ApplicationContext.xml"
     String resourceDir = "/src/main/resources/"
 
-    //  def build = Thread.currentThread().executable
-    xmlConfig = "/"
+    if(Jenkins.getInstance()) {
+      def build = Thread.currentThread().executable
+      xmlConfig = "/" + build.workspace.toString()
+    } else {
+      xmlConfig = xmlFile
+    }
+    this.class.classLoader.rootLoader.addURL("file://${xmlConfig}")
+
   }
 /**
-    ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml").getResourceByPath(xmlConfig)
+ ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml").getResourceByPath(xmlConfig)
 
-    GitHubConfig p1 = (GitHubConfig) context.getBean('gitHubConfig');
-    System.out.println(p1.main());
-  }
+ GitHubConfig p1 = (GitHubConfig) context.getBean('gitHubConfig');
+ System.out.println(p1.main());
+ }
  */
+/**
+ String xmlConfig
+ String xmlFile = "ApplicationContext.xml"
+ String resourceDir = "/src/main/resources/"
+ if(Jenkins.getInstance()) {def build = Thread.currentThread().executable
+ xmlConfig = "/" + build.workspace.toString() + resourceDir + xmlFile} else {xmlConfig = xmlFile}ApplicationContext context = new FileSystemXmlApplicationContext(xmlConfig)
+ **/
 }
