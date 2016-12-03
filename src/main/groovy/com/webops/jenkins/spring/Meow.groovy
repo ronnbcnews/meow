@@ -40,6 +40,8 @@ public class Meow {
     String xmlConfig
     String xmlFile = "ApplicationContext.xml"
     String resourceDir = "/src/main/resources/"
+    ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:ApplicationContext.xml");
+
     def classLoader = new GroovyClassLoader()
     classLoader.getURLs().each { url->
       println("inside: - ${url.toString()}")
