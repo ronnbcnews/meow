@@ -43,8 +43,7 @@ public class Meow {
     } else {
       xmlConfig = xmlFile
     }
-    this.class.classLoader.rootLoader.addURL("file://${xmlConfig}")
-
+    System.out.println(System.getProperty("java.class.path"));
   }
 /**
  ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml").getResourceByPath(xmlConfig)
